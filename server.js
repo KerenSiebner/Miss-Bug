@@ -2,6 +2,7 @@ const express = require('express')
 const cookieParser = require('cookie-parser')
 
 const bugService = require('./services/bug-service.js')
+const userService = require('./services/user-service.js')
 
 const app = express()
 const PORT = 3030
@@ -27,17 +28,16 @@ app.put('/api/bug/:bugId', (req, res) => {
     const bug = req.body
     console.log('bug', bug)
     bugService.save(bug)
-    .then((savedBug) => res.send(savedBug))
+        .then((savedBug) => res.send(savedBug))
     // bugService.createPDF()
     // res.send()
 })
 
-app.post('/api/bug',(req,res)=>{
+app.post('/api/bug', (req, res) => {
     console.log('req', req)
     const bug = req.body
-    bugService.save(bug).then((savedBug)=>res.send(savedBug))
+    bugService.save(bug).then((savedBug) => res.send(savedBug))
 })
-
 
 // Save bugs
 app.get('/api/bug/save', (req, res) => {
@@ -77,6 +77,46 @@ app.delete('/api/bug/:bugId', (req, res) => {
     const { bugId } = req.params
     bugService.remove(bugId).then(() => res.send({ msg: 'Bug removed succeessfully', bugId }))
 })
+
+//User API
+
+//login
+app.post('/api/auth/login', (req, res) => {
+    const { username, password } = req.body
+    userService.login({ username, password })
+        .then((user) => {
+            const loginToken = userService.getLoginToken(user)
+            res.cookie('loginToken', loginToken)
+            res.send(user)
+        }).catch(err => {
+            console.log('Error:', err)
+            res.status(400).send('Cannot login')
+        })
+})
+
+//signup
+
+app.post('/api/auth/signup', (req, res) => {
+    const { fullname, username, password } = req.body
+    userService.signup({ fullname, username, password })
+        .then(user => {
+            const loginToken = userService.getLoginToken(user)
+            res.cookie('loginToken', loginToken)
+            res.send(user)
+        }).catch(err => {
+            console.log('Error:', err)
+            res.status(400).send('Cannot signup')
+        })
+})
+
+//logout
+
+app.post('/api/auth/logout', (req,res)=>{
+    console.log('IM HEREEEEE')
+    res.clearCookie('loginToken')
+    res.send('Logged out')
+})
+
 
 
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}: http://localhost:${PORT}/`))
