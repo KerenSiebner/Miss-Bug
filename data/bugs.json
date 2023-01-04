@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Broken screen!",
+    "description": "I broke it because i punched it",
+    "severity": 10,
+    "createdAt": 1672686434224,
+    "_id": "4k7zv"
+  },
+  {
+    "title": "Server rack is broken",
+    "description": "it broke because it was rusted, for now i use the chair",
+    "severity": 7,
+    "createdAt": null,
+    "_id": "EzndS"
+  },
+  {
+    "id": "",
+    "title": "Forgot to put app.use(express.json())",
+    "description": "nothing works",
+    "severity": 0,
+    "createdAt": 1672775802071,
+    "_id": "ro13S"
+  },
+  {
+    "id": "",
+    "title": "fhddsf",
+    "description": "sdhfdfh",
+    "severity": 4,
+    "createdAt": 1672775828094,
+    "_id": "7VoTZ"
+  }
+]
