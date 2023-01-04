@@ -71,6 +71,23 @@ app.get('/api/bug/:bugId', (req, res) => {
     })
 
 })
+// Read bug - getByCreator
+app.get('/api/bug/:userId', (req, res) => {
+    const { userId } = req.params
+    // const { currBugId } = req.cookies
+    let visitCountIds = req.cookies.visitCountIds || []
+    // if (!visitCountIds.includes(bugId)) {
+    //     if (visitCountIds.length >= 3 && !IS_PREMIUM) {
+    //         return res.status(401).send('Wait for a bit')
+    //     }
+    //     visitCountIds.push(bugId)
+    // }
+    bugService.getCreatorBugs(userId).then(bug => {
+        res.cookie('visitCountIds', visitCountIds, { maxAge: COOKIE_AGE })
+        res.send(bug)
+    })
+
+})
 
 // Remove bug
 app.delete('/api/bug/:bugId', (req, res) => {

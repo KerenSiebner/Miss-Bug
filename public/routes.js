@@ -2,6 +2,7 @@ import {HomePage} from './views/home-page.jsx'
 import {AboutUs} from './views/about-us.jsx'
 import {BugIndex} from './views/bug-index.jsx'
 import {BugDetails} from './views/bug-details.jsx'
+import {UserDetails} from './views/user-details.jsx'
 
 
 export default [
@@ -20,5 +21,9 @@ export default [
     {
         path:'/about',
         component: AboutUs,
+    },
+    {
+        path:'/user',
+        component: UserDetails,
     }
 ]

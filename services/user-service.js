@@ -3,12 +3,14 @@ const fs = require('fs')
 const Cryptr = require('cryptr')
 const cryptr = new Cryptr('secret-bug-9696')
 var users = require('../data/user.json')
+var bugs = require('../data/bugs.json')
 
 
 module.exports = {
     login,
     signup,
     getLoginToken,
+    getCreatorBugs
 }
 
 function getLoginToken(user) {
@@ -31,7 +33,6 @@ function signup({ fullname, username, password }) {
     return _writeUsersToFile().then(() => userToSave)
 }
 
-
 function _makeId(length = 5) {
     let text = '';
     const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -50,4 +51,9 @@ function _writeUsersToFile() {
             res()
         })
     })
+}
+
+function getCreatorBugs(userId){
+    const userBugs = bugs.filter(bug => bug.creator._id === userId)
+    return Promise.resolve(userBugs)
 }

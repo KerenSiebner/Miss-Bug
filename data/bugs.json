@@ -1,32 +1,46 @@
 [
   {
+    "_id": "4k7zv",
     "title": "Broken screen!",
     "description": "I broke it because i punched it",
     "severity": 10,
     "createdAt": 1672686434224,
-    "_id": "4k7zv"
+    "creator": {
+      "_id": "u101",
+      "fullname": "Puki Ja"
+    }
   },
   {
+    "_id": "EzndS",
     "title": "Server rack is broken",
     "description": "it broke because it was rusted, for now i use the chair",
     "severity": 7,
     "createdAt": null,
-    "_id": "EzndS"
+    "creator": {
+      "_id": "Li61J",
+      "fullname": "keren zil"
+    }
   },
   {
-    "id": "",
+    "_id": "ro13S",
     "title": "Forgot to put app.use(express.json())",
     "description": "nothing works",
     "severity": 0,
     "createdAt": 1672775802071,
-    "_id": "ro13S"
+    "creator": {
+      "_id": "hsLBr",
+      "fullname": "gilad zil"
+    }
   },
   {
-    "id": "",
+    "_id": "7VoTZ",
     "title": "fhddsf",
     "description": "sdhfdfh",
     "severity": 4,
     "createdAt": 1672775828094,
-    "_id": "7VoTZ"
+    "creator": {
+      "_id": "jpnFM",
+      "fullname": "Nini op"
+    }
   }
 ]

@@ -10,7 +10,7 @@ export const userService = {
     getEmptyCredentials,
     login,
     signup,
-    logout
+    logout,
 }
 
 

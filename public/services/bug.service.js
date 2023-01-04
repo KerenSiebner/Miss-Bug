@@ -11,7 +11,8 @@ export const bugService = {
     remove,
     getEmptyBug,
     getPDF,
-    getDefaultFilter
+    getDefaultFilter, 
+    getByCreator
 }
 
 
@@ -49,4 +50,8 @@ function getPDF() {
 
 function getDefaultFilter() {
     return { title: '', minSeverity: 0 , pageIdx: 0}
+}
+
+function getByCreator(userId){
+    return axios.get(BASE_URL + userId).then(res => res.data)
 }
